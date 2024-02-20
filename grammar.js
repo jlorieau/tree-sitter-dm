@@ -24,11 +24,38 @@ module.exports = grammar({
     _start_tag: $ => seq(
       TAG_IDENT,
       field('name', $.tag_name),
-      // repeat($.attribute),
+      optional($.attributes),
     ),
 
     // Allowable tag names
     tag_name: _ => /[a-zA-Z][\w_]*/,
+
+    // Attributes
+    attributes: $ => seq(
+      "[",
+      repeat($.attribute),
+      "]",
+    ),
+
+    attribute: $ => seq(
+      $.attribute_name,
+      optional(seq(
+        '=',
+        choice(
+          $.attribute_value,
+          $.quoted_attribute_value,
+        ),
+      )),
+    ),
+
+    attribute_name: _ => /[^{}"'/=\s\]]+/,
+
+    attribute_value: _ => /[^{}"'=\s\]]+/,
+
+    quoted_attribute_value: $ => choice(
+      seq('\'', optional(alias(/[^']+/, $.attribute_value)), '\''),
+      seq('"', optional(alias(/[^"]+/, $.attribute_value)), '"'),
+    ),
 
     // Regular text without tags
     text: _ => /[^{}&\s@]([^{}&@]*[^{}&@\s])?/,

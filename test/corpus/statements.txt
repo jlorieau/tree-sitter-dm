@@ -12,6 +12,26 @@ Tags
 
 
 ===================================
+Tags with Attributes
+===================================
+@span[id=one name="my [name]"]{Hello}
+---
+
+(document
+  (tag
+    name: (tag_name)
+    (attributes
+      (attribute
+        (attribute_name)
+        (attribute_value))
+      (attribute
+        (attribute_name)
+        (quoted_attribute_value (attribute_value))))
+    text: (text))
+)
+
+
+===================================
 Text with Tags (1-level)
 ===================================
 This is @i{my} text: @span{Hello}!
