@@ -1,9 +1,70 @@
 {
-  "name": "YOUR_LANGUAGE_NAME",
+  "name": "disseminate",
   "rules": {
-    "source_file": {
-      "type": "STRING",
-      "value": "hello"
+    "document": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_node"
+      }
+    },
+    "_node": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "element"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "text"
+        }
+      ]
+    },
+    "element": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "start_tag"
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_node"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "start_tag": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tag_name"
+        }
+      ]
+    },
+    "tag_name": {
+      "type": "PATTERN",
+      "value": "\\w+"
+    },
+    "text": {
+      "type": "PATTERN",
+      "value": "[^{}&\\s@]([^{}&@]*[^{}&@\\s])?"
     }
   },
   "extras": [
