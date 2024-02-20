@@ -27,3 +27,20 @@ This is @i{my} text: @span{Hello}!
     name: (tag_name)
     text: (text))
   text: (text))
+
+
+===================================
+Nested Tags
+===================================
+This is @span{@i{nested} tag}.
+---
+
+(document
+  text: (text)
+  (tag
+    name: (tag_name)
+    (tag
+      name: (tag_name)
+      text: (text))
+    text: (text))
+  text: (text))
