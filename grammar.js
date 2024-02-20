@@ -12,6 +12,7 @@ module.exports = grammar({
       field('text', $.text)
     ),
     
+    // A tag with contents
     tag: $ => seq(
         $._start_tag,
         "{",
@@ -19,13 +20,15 @@ module.exports = grammar({
         "}"
     ),
 
+    // A tag identifier with a tag name and (optional) tag attributes
     _start_tag: $ => seq(
       TAG_IDENT,
       field('name', $.tag_name),
       // repeat($.attribute),
     ),
 
-    tag_name: _ => /\w+/,
+    // Allowable tag names
+    tag_name: _ => /[a-zA-Z][\w_]*/,
 
     // Regular text without tags
     text: _ => /[^{}&\s@]([^{}&@]*[^{}&@\s])?/,

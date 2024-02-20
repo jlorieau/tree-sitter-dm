@@ -68,7 +68,7 @@
     },
     "tag_name": {
       "type": "PATTERN",
-      "value": "\\w+"
+      "value": "[a-zA-Z][\\w_]*"
     },
     "text": {
       "type": "PATTERN",
