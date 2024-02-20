@@ -1,7 +1,5 @@
 // Tag identifier
 const TAG_IDENT = "@";
-const TAG_OPEN = "{";
-const TAG_CLOSE = "}";
 
 module.exports = grammar({
   name: 'disseminate',
@@ -10,26 +8,26 @@ module.exports = grammar({
     document: $ => repeat($._node),
 
     _node: $ => choice(
-      $.element,
-      $.text
+      $._element,
+      field('text', $.text)
     ),
     
-    element: $ => seq(
+    _element: $ => seq(
         $.start_tag,
-        TAG_OPEN,
+        "{",
         repeat($._node),
-        TAG_CLOSE
+        "}"
     ),
 
     start_tag: $ => seq(
       TAG_IDENT,
-      $.tag_name,
+      field('name', $.tag_name),
       // repeat($.attribute),
     ),
 
     tag_name: _ => /\w+/,
 
-    // Regular text (from html)
+    // Regular text without tags
     text: _ => /[^{}&\s@]([^{}&@]*[^{}&@\s])?/,
 
   }

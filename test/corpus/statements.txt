@@ -5,7 +5,24 @@ Tags
 ---
 
 (document
-      (element
-        (start_tag
-          (tag_name))
-        (text)))
+  (start_tag
+    name: (tag_name))
+  text: (text))
+
+
+===================================
+Text with Tags (1-level)
+===================================
+This is @i{my} text: @span{Hello}!
+---
+
+(document
+  (text)
+  (start_tag
+    (tag_name))
+  (text)
+  (text)
+  (start_tag
+    (tag_name))
+  (text)
+  (text))

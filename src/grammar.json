@@ -13,15 +13,19 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "element"
+          "name": "_element"
         },
         {
-          "type": "SYMBOL",
-          "name": "text"
+          "type": "FIELD",
+          "name": "text",
+          "content": {
+            "type": "SYMBOL",
+            "name": "text"
+          }
         }
       ]
     },
-    "element": {
+    "_element": {
       "type": "SEQ",
       "members": [
         {
@@ -53,8 +57,12 @@
           "value": "@"
         },
         {
-          "type": "SYMBOL",
-          "name": "tag_name"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "tag_name"
+          }
         }
       ]
     },
