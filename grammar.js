@@ -8,18 +8,18 @@ module.exports = grammar({
     document: $ => repeat($._node),
 
     _node: $ => choice(
-      $._element,
+      $.tag,
       field('text', $.text)
     ),
     
-    _element: $ => seq(
-        $.start_tag,
+    tag: $ => seq(
+        $._start_tag,
         "{",
         repeat($._node),
         "}"
     ),
 
-    start_tag: $ => seq(
+    _start_tag: $ => seq(
       TAG_IDENT,
       field('name', $.tag_name),
       // repeat($.attribute),

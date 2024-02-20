@@ -13,7 +13,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_element"
+          "name": "tag"
         },
         {
           "type": "FIELD",
@@ -25,12 +25,12 @@
         }
       ]
     },
-    "_element": {
+    "tag": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "start_tag"
+          "name": "_start_tag"
         },
         {
           "type": "STRING",
@@ -49,7 +49,7 @@
         }
       ]
     },
-    "start_tag": {
+    "_start_tag": {
       "type": "SEQ",
       "members": [
         {

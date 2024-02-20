@@ -5,9 +5,10 @@ Tags
 ---
 
 (document
-  (start_tag
-    name: (tag_name))
-  text: (text))
+  (tag
+    name: (tag_name)
+    text: (text))
+)
 
 
 ===================================
@@ -17,12 +18,12 @@ This is @i{my} text: @span{Hello}!
 ---
 
 (document
-  (text)
-  (start_tag
-    (tag_name))
-  (text)
-  (text)
-  (start_tag
-    (tag_name))
-  (text)
-  (text))
+  text: (text)
+  (tag
+    name: (tag_name)
+    text: (text))
+  text: (text)
+  (tag
+    name: (tag_name)
+    text: (text))
+  text: (text))

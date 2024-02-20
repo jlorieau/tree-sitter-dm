@@ -19,14 +19,14 @@
       "required": false,
       "types": [
         {
-          "type": "start_tag",
+          "type": "tag",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "start_tag",
+    "type": "tag",
     "named": true,
     "fields": {
       "name": {
@@ -38,7 +38,27 @@
             "named": true
           }
         ]
+      },
+      "text": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "text",
+            "named": true
+          }
+        ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
     }
   },
   {
