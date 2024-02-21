@@ -11,6 +11,28 @@ Basic Tag (no paragraph)
       (text)
     )))
 
+
+===================================
+Basic Tag with Attribute
+===================================
+@span[id=one name="my [name]"]{Hello}
+---
+
+(document
+  (p
+    (tag
+      (tag_name)
+      (attributes
+        (attribute
+          (attribute_name)
+          (attribute_value))
+        (attribute
+          (attribute_name)
+          (quoted_attribute_value
+            (attribute_value))))
+      (text))))
+
+
 ===================================
 Tags with Text
 ===================================
@@ -46,22 +68,3 @@ This is @span{my @i{nested} tag}.
         (text))
       (text))
     (text)))
-
-===================================
-Tags with Attributes (no paragraph)
-===================================
-@span[id=one name="my [name]"]{Hello}
----
-
-(document
-  (tag
-    name: (tag_name)
-    (attributes
-      (attribute
-        (attribute_name)
-        (attribute_value))
-      (attribute
-        (attribute_name)
-        (quoted_attribute_value (attribute_value))))
-    text: (text))
-)
