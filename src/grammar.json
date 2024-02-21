@@ -15,7 +15,7 @@
           "type": "REPEAT1",
           "content": {
             "type": "SYMBOL",
-            "name": "node"
+            "name": "_node"
           }
         },
         {
@@ -24,7 +24,7 @@
         }
       ]
     },
-    "node": {
+    "_node": {
       "type": "CHOICE",
       "members": [
         {
@@ -41,14 +41,22 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
           "type": "SYMBOL",
-          "name": "tag_start"
+          "name": "tag_name"
+        },
+        {
+          "type": "STRING",
+          "value": "{"
         },
         {
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "node"
+            "name": "_node"
           }
         },
         {
@@ -65,9 +73,9 @@
       "type": "PATTERN",
       "value": "[\\n\\s*]+"
     },
-    "tag_start": {
+    "tag_name": {
       "type": "PATTERN",
-      "value": "@[a-zA-Z][\\w_]*\\{"
+      "value": "[a-zA-Z][\\w_]*"
     }
   },
   "extras": [

@@ -7,21 +7,16 @@ module.exports = grammar({
   rules: {
     document: $ => repeat($.p),
 
-    p: $ => seq(repeat1($.node), $._new_block),
+    p: $ => seq(repeat1($._node), $._new_block),
     
-    node: $ => choice($.text, $.tag),
+    _node: $ => choice($.text, $.tag),
   
     // A tag with contents
-    // tag: $ => seq(
-    //     TAG_IDENT,
-    //     $._start_tag,
-    //     "{",
-    //     repeat($.node),
-    //     "}"
-    // ),
     tag: $ => seq(
-      $.tag_start,
-      repeat($.node),
+      TAG_IDENT,
+      $.tag_name,
+      "{",
+      repeat($._node),
       "}"
   ),
 
@@ -35,8 +30,7 @@ module.exports = grammar({
     // text: _ => /([^\n]+(\n)?)+/,  // Block of text
     text: _ => /([^\n{}@]+(\n)?)+/,  // Block of text
     _new_block: _ => /[\n\s*]+/,  // New block
-    // tag_name: _ => /[a-zA-Z][\w_]*/,  // Allowable tag names
-    tag_start: _ => /@[a-zA-Z][\w_]*\{/,
+    tag_name: _ => /[a-zA-Z][\w_]*/,  // Allowable tag names
 
 
     //

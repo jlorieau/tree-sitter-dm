@@ -15,11 +15,11 @@
     }
   },
   {
-    "type": "node",
+    "type": "p",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -34,21 +34,6 @@
     }
   },
   {
-    "type": "p",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "node",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "tag",
     "named": true,
     "fields": {},
@@ -57,23 +42,35 @@
       "required": true,
       "types": [
         {
-          "type": "node",
+          "type": "tag",
           "named": true
         },
         {
-          "type": "tag_start",
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "text",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "tag_start",
+    "type": "@",
+    "named": false
+  },
+  {
+    "type": "tag_name",
     "named": true
   },
   {
     "type": "text",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
   },
   {
     "type": "}",
