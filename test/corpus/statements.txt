@@ -1,18 +1,54 @@
 ===================================
-Tags
+Basic Tag (no paragraph)
 ===================================
 @span{Hello}
 ---
 
 (document
-  (tag
-    name: (tag_name)
-    text: (text))
-)
-
+  (p
+    (tag
+      (tag_name)
+      (text)
+    )))
 
 ===================================
-Tags with Attributes
+Tags with Text
+===================================
+This is @i{my} text: @span{Hello}!
+---
+
+(document
+  (p
+    (text)
+    (tag
+      (tag_name)
+      (text))
+    (text)
+    (tag
+      (tag_name)
+      (text))
+    (text)))
+
+===================================
+Text with Nested Tags
+===================================
+This is @span{my @i{nested} tag}.
+---
+
+(document
+  (p
+    (text)
+    (tag
+      (tag_name)
+      (text)
+      (tag
+        (tag_name)
+        (text))
+      (text))
+    (text)))
+
+===================================
+Tags with Attributes (no paragraph)
 ===================================
 @span[id=one name="my [name]"]{Hello}
 ---
@@ -29,38 +65,3 @@ Tags with Attributes
         (quoted_attribute_value (attribute_value))))
     text: (text))
 )
-
-
-===================================
-Text with Tags (1-level)
-===================================
-This is @i{my} text: @span{Hello}!
----
-
-(document
-  text: (text)
-  (tag
-    name: (tag_name)
-    text: (text))
-  text: (text)
-  (tag
-    name: (tag_name)
-    text: (text))
-  text: (text))
-
-
-===================================
-Nested Tags
-===================================
-This is @span{@i{nested} tag}.
----
-
-(document
-  text: (text)
-  (tag
-    name: (tag_name)
-    (tag
-      name: (tag_name)
-      text: (text))
-    text: (text))
-  text: (text))

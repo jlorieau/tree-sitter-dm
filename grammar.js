@@ -1,5 +1,5 @@
-// Tag identifier
-const TAG_IDENT = "@";
+const TAG_IDENT = "@";  // Tag identifier
+const EOF = "\0";  // end of file or end of string 
 
 module.exports = grammar({
   name: 'disseminate',
@@ -7,7 +7,10 @@ module.exports = grammar({
   rules: {
     document: $ => repeat($.p),
 
-    p: $ => seq(repeat1($._node), $._new_block),
+    p: $ => choice(
+      seq(repeat1($._node), $._new_block),
+      seq(repeat1($._node), EOF),
+    ),
     
     _node: $ => choice($.text, $.tag),
   
