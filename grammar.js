@@ -40,7 +40,7 @@ module.exports = grammar({
         '=',
         choice(
           $.attribute_value,
-          $.quoted_attribute_value,
+          $._quoted_attribute_value,
         ),
       )),
     ),
@@ -50,7 +50,7 @@ module.exports = grammar({
     tag_name: _ => /[a-zA-Z][\w_]*/,  // Allowable tag names
     attribute_name: _ => /[^{}"'/=\s\]]+/,  // Name of attribute
     attribute_value: _ => /[^{}"'=\s\]]+/,  // Value of attribute
-    quoted_attribute_value: $ => choice(
+    _quoted_attribute_value: $ => choice(
         seq('\'', optional(alias(/[^']+/, $.attribute_value)), '\''),
         seq('"', optional(alias(/[^"]+/, $.attribute_value)), '"'),
       ),

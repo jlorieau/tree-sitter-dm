@@ -144,7 +144,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "quoted_attribute_value"
+                      "name": "_quoted_attribute_value"
                     }
                   ]
                 }
@@ -177,7 +177,7 @@
       "type": "PATTERN",
       "value": "[^{}\"'=\\s\\]]+"
     },
-    "quoted_attribute_value": {
+    "_quoted_attribute_value": {
       "type": "CHOICE",
       "members": [
         {

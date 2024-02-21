@@ -28,8 +28,7 @@ Basic Tag with Attribute
           (attribute_value))
         (attribute
           (attribute_name)
-          (quoted_attribute_value
-            (attribute_value))))
+          (attribute_value)))
       (text))))
 
 
