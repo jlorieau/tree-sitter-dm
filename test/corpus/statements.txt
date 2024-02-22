@@ -33,6 +33,19 @@ Basic Tag with Attribute
 
 
 ===================================
+Verbatim tag
+===================================
+My @v{first @i{test} tag}!
+---
+
+(document
+  (p
+    (text)
+    (tag_verb)
+    (text)))
+
+
+===================================
 Tags with Text
 ===================================
 This is @i{my} text: @span{Hello}!
@@ -80,4 +93,20 @@ It is also written over two lines.
 
 This is my third paragraph.
 ---
+
+(document
+  (p
+    (text)
+    (tag
+      (tag_name)
+      (text))
+    (text))
+  (p
+    (text)
+    (tag
+      (tag_name)
+      (text))
+    (text))
+  (p
+    (text)))
 

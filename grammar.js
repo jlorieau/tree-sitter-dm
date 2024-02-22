@@ -15,7 +15,7 @@ module.exports = grammar({
     ),
     
     // A (hidden) node containing either text or a tag.
-    _node: $ => choice($.text, $.tag),
+    _node: $ => choice($.text, $.tag_verb, $.tag),
   
     // A tag with contents comprising a node
     tag: $ => seq(
@@ -24,6 +24,22 @@ module.exports = grammar({
       optional($.attributes),  // optional attributes
       "{",
       repeat($._node),
+      "}"
+    ),
+
+    // A (hidden) node for verbose 
+    _verb_node: $ => choice(
+      $._verb_no_paren,
+      seq('{', $._verb_node, '}'),
+    ),
+
+    // A verbatim tag with unparsed contents
+    tag_verb: $ => seq(
+      TAG_IDENT,
+      choice('v', 'eq'),  // verbatim tag names
+      optional($.attributes),  // optional attributes
+      "{",
+      repeat($._verb_node),  // Capture the content text verbatim
       "}"
     ),
 
@@ -53,6 +69,7 @@ module.exports = grammar({
     _quoted_attribute_value: $ => choice(
         seq('\'', optional(alias(/[^']+/, $.attribute_value)), '\''),
         seq('"', optional(alias(/[^"]+/, $.attribute_value)), '"'),
-      ),
-  }
+      ),  // Quoted value of attribute with single (') or double ("") quotes
+    _verb_no_paren: _ => /[^\{\}]+/,  // block of text for verbatim nodes
+  } 
 });
