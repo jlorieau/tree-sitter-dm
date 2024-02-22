@@ -177,10 +177,6 @@
         }
       ]
     },
-    "_verb_no_paren": {
-      "type": "PATTERN",
-      "value": "[^\\{\\}]+"
-    },
     "attributes": {
       "type": "SEQ",
       "members": [
@@ -324,6 +320,10 @@
           ]
         }
       ]
+    },
+    "_verb_no_paren": {
+      "type": "PATTERN",
+      "value": "[^\\{\\}]+"
     }
   },
   "extras": [

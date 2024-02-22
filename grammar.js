@@ -4,6 +4,10 @@ const EOF = "\0";  // end of file or end of string
 module.exports = grammar({
   name: 'disseminate',
 
+  /* TODO:
+   *   - verbatim blocks vs inline
+   */
+
   rules: {
     document: $ => repeat($.p),
 
