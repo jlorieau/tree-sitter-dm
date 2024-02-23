@@ -67,6 +67,10 @@
         {
           "type": "text",
           "named": true
+        },
+        {
+          "type": "var",
+          "named": true
         }
       ]
     }
@@ -98,6 +102,10 @@
         {
           "type": "text",
           "named": true
+        },
+        {
+          "type": "var",
+          "named": true
         }
       ]
     }
@@ -118,6 +126,25 @@
     }
   },
   {
+    "type": "var",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\u0000",
     "named": false
   },
@@ -127,6 +154,10 @@
   },
   {
     "type": "'",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {

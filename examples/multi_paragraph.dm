@@ -1,5 +1,10 @@
+@title: My first document
+@authors:
+    - Henry Stemple
+    - Justin L Lorieau
+
 This is a document with multiple paragraphs.
-This is the @i{first} paragraph.
+This is the @i{first} paragraph in the document @title.
 
 This is the @b{second} paragraph.
 It is also written over two lines.

@@ -5,11 +5,15 @@ module.exports = grammar({
   name: 'disseminate',
 
   /* TODO:
+   *   - Add YAML header
+   *   - Add macros
    *   - verbatim blocks vs inline
    */
 
   rules: {
-    document: $ => repeat($.p),
+    document: $ => seq(
+      repeat($.p),
+    ),
 
     // A paragraph containing one or more nodes and a new block 
     // (an extra newline or end-of-file)
@@ -19,17 +23,27 @@ module.exports = grammar({
     ),
     
     // A (hidden) node containing either text or a tag.
-    _node: $ => choice($.text, $.tag_verb, $.tag),
+    _node: $ => choice($.text, $.tag_verb, $.tag, $.var),
   
+    // A variable
+    var:  $ => prec.left(seq(
+      TAG_IDENT,
+      $.tag_name,
+      ":",
+      $._hspace,
+      repeat1($.text)
+    )), 
+
+
     // A tag with contents comprising a node
-    tag: $ => seq(
+    tag: $ => prec.left(1, seq(
       TAG_IDENT,
       $.tag_name,
       optional($.attributes),  // optional attributes
       "{",
       repeat($._node),
       "}"
-    ),
+    )),
 
     // A (hidden) node for verbose 
     _verb_node: $ => choice(
@@ -65,8 +79,12 @@ module.exports = grammar({
       )),
     ),
 
+    // Text regexes
     text: _ => /([^\n{}@]+(\n)?)+/,  // Block of text
-    _new_block: _ => /[\n\s*]+/,  // New block
+    _hspace: _ => /[ \t\f]*/,  // Horitonal space
+    _new_block: _ => /[\n\s*]+/,  // New block (paragraph)
+
+    // Tag regexes
     tag_name: _ => /[a-zA-Z][\w_]*/,  // Allowable tag names
     attribute_name: _ => /[^{}"'/=\s\]]+/,  // Name of attribute
     attribute_value: _ => /[^{}"'=\s\]]+/,  // Value of attribute
@@ -74,6 +92,8 @@ module.exports = grammar({
         seq('\'', optional(alias(/[^']+/, $.attribute_value)), '\''),
         seq('"', optional(alias(/[^"]+/, $.attribute_value)), '"'),
       ),  // Quoted value of attribute with single (') or double ("") quotes
+    
+    // Verb tag regexes
     _verb_no_paren: _ => /[^\{\}]+/,  // block of text for verbatim nodes
   } 
 });
