@@ -5,19 +5,18 @@ module.exports = grammar({
   name: 'disseminate',
 
   /* TODO:
-   *   - Add YAML header
    *   - Add macros
    *   - verbatim blocks vs inline
    */
 
   rules: {
     document: $ => seq(
-      repeat($.p),
+      repeat($.block),
     ),
 
-    // A paragraph containing one or more nodes and a new block 
+    // A block (paragraph) containing one or more nodes and a new block 
     // (an extra newline or end-of-file)
-    p: $ => choice(
+    block: $ => choice(
       seq(repeat1($._node), $._new_block),
       seq(repeat1($._node), EOF),
     ),
