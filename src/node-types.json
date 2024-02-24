@@ -53,15 +53,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "attributes",
-          "named": true
-        },
-        {
-          "type": "tag_name",
+          "type": "name",
           "named": true
         }
       ]
@@ -111,11 +107,11 @@
           "named": true
         },
         {
-          "type": "tag",
+          "type": "name",
           "named": true
         },
         {
-          "type": "tag_name",
+          "type": "tag",
           "named": true
         },
         {
@@ -185,7 +181,7 @@
     "named": false
   },
   {
-    "type": "tag_name",
+    "type": "name",
     "named": true
   },
   {

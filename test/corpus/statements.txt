@@ -7,7 +7,7 @@ Basic Tag (no paragraph)
 (document
   (p
     (tag
-      (tag_name)
+      (name)
       (text)
     )))
 
@@ -21,7 +21,7 @@ Basic Tag with Attribute
 (document
   (p
     (tag
-      (tag_name)
+      (name)
       (attributes
         (attribute
           (attribute_name)
@@ -55,11 +55,11 @@ This is @i{my} text: @span{Hello}!
   (p
     (text)
     (tag
-      (tag_name)
+      (name)
       (text))
     (text)
     (tag
-      (tag_name)
+      (name)
       (text))
     (text)))
 
@@ -73,10 +73,10 @@ This is @span{my @i{nested} tag}.
   (p
     (text)
     (tag
-      (tag_name)
+      (name)
       (text)
       (tag
-        (tag_name)
+        (name)
         (text))
       (text))
     (text)))
@@ -98,13 +98,13 @@ This is my third paragraph.
   (p
     (text)
     (tag
-      (tag_name)
+      (name)
       (text))
     (text))
   (p
     (text)
     (tag
-      (tag_name)
+      (name)
       (text))
     (text))
   (p
@@ -122,11 +122,11 @@ This is my document with title @title.
  (document
     (p
       (tag
-        (tag_name)
+        (name)
         (text)))
     (p
       (text)
       (macro
-        (tag_name))
+        (name))
       (text)))
 

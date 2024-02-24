@@ -28,7 +28,7 @@ module.exports = grammar({
     // A tag with contents comprising a node
     tag: $ => prec.left(1, seq(
       TAG_IDENT,
-      $.tag_name,
+      $.name,
       optional($.attributes),  // optional attributes
       "{",
       repeat($._node),
@@ -55,7 +55,7 @@ module.exports = grammar({
     macro: $ => prec.left(
       seq(
         TAG_IDENT,
-        $.tag_name,
+        $.name,
     )),
 
     // Tag attributes
@@ -83,7 +83,7 @@ module.exports = grammar({
     _new_block: _ => /[\n\s*]+/,  // New block (paragraph)
 
     // Tag regexes
-    tag_name: _ => /[a-zA-Z][\w_]*/,  // Allowable tag names
+    name: _ => /[a-zA-Z][\w_]*/,  // Allowable tag names
     attribute_name: _ => /[^{}"'/=\s\]]+/,  // Name of attribute
     attribute_value: _ => /[^{}"'=\s\]]+/,  // Value of attribute
     _quoted_attribute_value: $ => choice(

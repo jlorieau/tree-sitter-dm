@@ -83,7 +83,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "tag_name"
+            "name": "name"
           },
           {
             "type": "CHOICE",
@@ -202,19 +202,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "tag_name"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "attributes"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
+            "name": "name"
           }
         ]
       }
@@ -299,7 +287,7 @@
       "type": "PATTERN",
       "value": "[\\n\\s*]+"
     },
-    "tag_name": {
+    "name": {
       "type": "PATTERN",
       "value": "[a-zA-Z][\\w_]*"
     },
