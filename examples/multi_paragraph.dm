@@ -1,7 +1,10 @@
-@title: My first document
-@authors:
+@title{My first document}
+@authors{
     - Henry Stemple
     - Justin L Lorieau
+}
+@next{./chapter3.dm}
+
 
 This is a document with multiple paragraphs.
 This is the @i{first} paragraph in the document @title.

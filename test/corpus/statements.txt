@@ -112,62 +112,21 @@ This is my third paragraph.
 
 
 ===================================
-Basic Variable
+Basic Macro with Paragraphs
 ===================================
-@title: My document
----
-(document
-  (p
-    (var
-      (tag_name)
-      (text)
-      )))
-
-
-===================================
-Basic Variable with Paragraphs
-===================================
-@title: My document
+@title{My document}
 
 This is my document with title @title.
 ---
-(document
-  (p
-    (var
-      (tag_name)
-      (text)
-      )))
 
-
-===================================
-Basic Headings (Multiple)
-===================================
-@author: J Lorieau
-@H2O: H@sup{2}O
-@toc {
-  @next{file1.txt}
-  @prev{file2.txt}
-}
-
-(document
-  (p
-    (var
-      (tag_name))
-    (text)
-    (var
-      (tag_name))
-    (text)
-    (tag
-      (tag_name)
-      (text))
-    (text)
-    (tag
-      (tag_name)
-      (text)
+ (document
+    (p
       (tag
         (tag_name)
-        (text))
+        (text)))
+    (p
       (text)
-      (tag
-        (tag_name)
-        (text)))))
+      (macro
+        (tag_name))
+      (text)))
+

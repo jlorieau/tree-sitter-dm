@@ -23,17 +23,7 @@ module.exports = grammar({
     ),
     
     // A (hidden) node containing either text or a tag.
-    _node: $ => choice($.text, $.tag_verb, $.tag, $.var),
-  
-    // A variable
-    var:  $ => prec.left(seq(
-      TAG_IDENT,
-      $.tag_name,
-      ":",
-      $._hspace,
-      repeat1($.text)
-    )), 
-
+    _node: $ => choice($.text, $.tag_verb, $.tag, $.macro),
 
     // A tag with contents comprising a node
     tag: $ => prec.left(1, seq(
@@ -61,6 +51,13 @@ module.exports = grammar({
       "}"
     ),
 
+    // A macro substitition
+    macro: $ => prec.left(
+      seq(
+        TAG_IDENT,
+        $.tag_name,
+    )),
+
     // Tag attributes
     attributes: $ => seq(
       "[",
@@ -80,7 +77,8 @@ module.exports = grammar({
     ),
 
     // Text regexes
-    text: _ => /([^\n{}@]+(\n)?)+/,  // Block of text
+    text: _ => /([^\n{}@]+(\n)?)+/,  // Block of text (including newlines)
+    line: $ => alias(/[^\n{}@]+/, $.text),  // Line of text
     _hspace: _ => /[ \t\f]*/,  // Horitonal space
     _new_block: _ => /[\n\s*]+/,  // New block (paragraph)
 
@@ -95,5 +93,6 @@ module.exports = grammar({
     
     // Verb tag regexes
     _verb_no_paren: _ => /[^\{\}]+/,  // block of text for verbatim nodes
-  } 
+  },
+    
 });

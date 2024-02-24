@@ -49,6 +49,25 @@
     }
   },
   {
+    "type": "macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attributes",
+          "named": true
+        },
+        {
+          "type": "tag_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "p",
     "named": true,
     "fields": {},
@@ -56,6 +75,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "macro",
+          "named": true
+        },
         {
           "type": "tag",
           "named": true
@@ -66,10 +89,6 @@
         },
         {
           "type": "text",
-          "named": true
-        },
-        {
-          "type": "var",
           "named": true
         }
       ]
@@ -88,6 +107,10 @@
           "named": true
         },
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "tag",
           "named": true
         },
@@ -101,10 +124,6 @@
         },
         {
           "type": "text",
-          "named": true
-        },
-        {
-          "type": "var",
           "named": true
         }
       ]
@@ -126,25 +145,6 @@
     }
   },
   {
-    "type": "var",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "tag_name",
-          "named": true
-        },
-        {
-          "type": "text",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "\u0000",
     "named": false
   },
@@ -154,10 +154,6 @@
   },
   {
     "type": "'",
-    "named": false
-  },
-  {
-    "type": ":",
     "named": false
   },
   {
