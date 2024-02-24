@@ -25,13 +25,14 @@ module.exports = grammar({
     _node: $ => choice($.text, $.tag_verb, $.tag, $.macro),
 
     // A tag with contents comprising a node
-    tag: $ => prec.left(1, seq(
-      TAG_IDENT,
-      $.name,
-      optional($.attributes),  // optional attributes
-      "{",
-      repeat($._node),
-      "}"
+    tag: $ => prec.left(
+      seq(
+        TAG_IDENT,
+        $.name,
+        optional($.attributes),  // optional attributes
+        "{",
+        repeat($._node),
+        "}"
     )),
 
     // A (hidden) node for verbose 
