@@ -1,5 +1,5 @@
 ===================================
-Basic Tag (no paragraph)
+Basic tag (no paragraph)
 ===================================
 @span{Hello}
 ---
@@ -13,7 +13,7 @@ Basic Tag (no paragraph)
 
 
 ===================================
-Basic Tag with Attribute
+Basic tag with attribute
 ===================================
 @span[id=one name="my [name]"]{Hello}
 ---
@@ -46,7 +46,7 @@ My @v{first @i{test} tag}!
 
 
 ===================================
-Tags with Text
+Tags with text
 ===================================
 This is @i{my} text: @span{Hello}!
 ---
@@ -64,7 +64,7 @@ This is @i{my} text: @span{Hello}!
     (text)))
 
 ===================================
-Text with Nested Tags
+Text with nested tags
 ===================================
 This is @span{my @i{nested} tag}.
 ---
@@ -83,7 +83,7 @@ This is @span{my @i{nested} tag}.
 
 
 ===================================
-Paragraphs with Tags
+Paragraphs with tags
 ===================================
 This is a document with multiple paragraphs.
 This is the @i{first} paragraph.
@@ -112,7 +112,7 @@ This is my third paragraph.
 
 
 ===================================
-Basic Macro with Paragraphs
+Basic macro with paragraphs
 ===================================
 @title{My document}
 
