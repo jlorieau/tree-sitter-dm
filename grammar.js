@@ -22,18 +22,21 @@ module.exports = grammar({
     ),
     
     // A (hidden) node containing either text or a tag.
-    _node: $ => choice($.text, $.tag_verb, $.tag, $.macro),
+    _node: $ => choice(
+      $.text, 
+      $.tag_verb, 
+      $.tag, 
+      $.macro,
+    ),
 
     // A tag with contents comprising a node
-    tag: $ => prec.left(
-      seq(
-        TAG_IDENT,
-        $.name,
-        optional($.attributes),  // optional attributes
-        "{",
-        repeat($._node),
-        "}"
-    )),
+    tag: $ => seq(
+      $._id,
+      optional($.attributes),  // optional attributes
+      "{",
+      repeat($._node),
+      "}"
+    ),
 
     // A (hidden) node for verbose 
     _verb_node: $ => choice(
@@ -43,8 +46,7 @@ module.exports = grammar({
 
     // A verbatim tag with unparsed contents
     tag_verb: $ => seq(
-      TAG_IDENT,
-      choice('v', 'eq'),  // verbatim tag names
+      $._id_verb,
       optional($.attributes),  // optional attributes
       "{",
       repeat($._verb_node),  // Capture the content text verbatim
@@ -52,11 +54,10 @@ module.exports = grammar({
     ),
 
     // A macro substitition
-    macro: $ => prec.left(
-      seq(
-        TAG_IDENT,
-        $.name,
-    )),
+    macro: $ => seq(
+      $._id,
+      // optional($.attributes),  // optional attributes
+    ),
 
     // Tag attributes
     attributes: $ => seq(
@@ -75,6 +76,10 @@ module.exports = grammar({
         ),
       )),
     ),
+
+    // Common tag elements
+    _id: $ => seq(TAG_IDENT, $.name),  // general identifier for tags/macros
+    _id_verb: $ => seq(TAG_IDENT, choice('v', 'eq')),  // identifier for verbose tags
 
     // Text regexes
     text: _ => /([^\n{}@]+(\n)?)+/,  // Block of text (including newlines)
