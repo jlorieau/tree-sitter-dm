@@ -13,7 +13,7 @@ This is the @b{second} paragraph.
 It is also written over two lines.
 
 This is my @i{third @b{paragraph}} with @b{@i{nested}} tags.
-It also has @plot{
+It also has @plot[width=100, height=150]{
     a multi-line
     tag
 } included.
