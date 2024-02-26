@@ -79,10 +79,6 @@
           "name": "_id"
         },
         {
-          "type": "SYMBOL",
-          "name": "attributes"
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
@@ -179,6 +175,18 @@
         {
           "type": "SYMBOL",
           "name": "_id"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "attributes"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -243,7 +251,7 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "([^\\n{}@]+(\\n)?)+"
+      "value": "([^\\n{}@\\[\\]]+(\\n)?)+"
     },
     "line": {
       "type": "ALIAS",
@@ -303,11 +311,11 @@
     },
     "attribute_name": {
       "type": "PATTERN",
-      "value": "[A-Za-z]+"
+      "value": "[^{}\"'/=\\s\\]]+"
     },
     "attribute_value": {
       "type": "PATTERN",
-      "value": "\\w+"
+      "value": "[^{}\"'=\\s\\]]+"
     },
     "_quoted_attribute_value": {
       "type": "CHOICE",

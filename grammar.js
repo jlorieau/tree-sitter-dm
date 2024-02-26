@@ -56,7 +56,7 @@ module.exports = grammar({
     // A macro substitition
     macro: $ => seq(
       $._id,
-      // optional($.attributes),  // optional attributes
+      optional($.attributes),  // optional attributes
     ),
 
     // Tag attributes
@@ -78,7 +78,7 @@ module.exports = grammar({
     ),
 
     // Text regexes
-    text: _ => /([^\n{}@]+(\n)?)+/,  // Block of text (including newlines)
+    text: _ => /([^\n{}@\[\]]+(\n)?)+/,  // Block of text (including newlines)
     line: $ => alias(/[^\n{}@]+/, $.text),  // Line of text
     _hspace: _ => /[ \t\f]*/,  // Horitonal space
     _new_block: _ => /[\n\s*]+/,  // New block (paragraph)
