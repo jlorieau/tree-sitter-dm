@@ -77,19 +77,19 @@ module.exports = grammar({
       )),
     ),
 
-    // Common tag elements
-    _id: $ => seq(TAG_IDENT, $.name),  // general identifier for tags/macros
-    _id_verb: $ => seq(TAG_IDENT, choice('v', 'eq')),  // identifier for verbose tags
-
     // Text regexes
     text: _ => /([^\n{}@]+(\n)?)+/,  // Block of text (including newlines)
     line: $ => alias(/[^\n{}@]+/, $.text),  // Line of text
     _hspace: _ => /[ \t\f]*/,  // Horitonal space
     _new_block: _ => /[\n\s*]+/,  // New block (paragraph)
 
+    // Common tag elements
+    _id: $ => seq(TAG_IDENT, $.name),  // general identifier for tags/macros
+    _id_verb: $ => seq(TAG_IDENT, choice('v', 'eq')),  // identifier for verbose tags
+
     // Tag regexes
     name: _ => /[a-zA-Z][\w_]*/,  // Allowable tag names
-    attribute_name: _ => /[^{}"'/=\s\]]+/,  // Name of attribute
+    attribute_name: _ => /[[^{}"'/=\s\]]]+/,  // Name of attribute
     attribute_value: _ => /[^{}"'=\s\]]+/,  // Value of attribute
     _quoted_attribute_value: $ => choice(
         seq('\'', optional(alias(/[^']+/, $.attribute_value)), '\''),

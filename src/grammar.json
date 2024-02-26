@@ -79,6 +79,10 @@
           "name": "_id"
         },
         {
+          "type": "SYMBOL",
+          "name": "attributes"
+        },
+        {
           "type": "CHOICE",
           "members": [
             {
@@ -237,6 +241,27 @@
         }
       ]
     },
+    "text": {
+      "type": "PATTERN",
+      "value": "([^\\n{}@]+(\\n)?)+"
+    },
+    "line": {
+      "type": "ALIAS",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\\n{}@]+"
+      },
+      "named": true,
+      "value": "text"
+    },
+    "_hspace": {
+      "type": "PATTERN",
+      "value": "[ \\t\\f]*"
+    },
+    "_new_block": {
+      "type": "PATTERN",
+      "value": "[\\n\\s*]+"
+    },
     "_id": {
       "type": "SEQ",
       "members": [
@@ -272,38 +297,17 @@
         }
       ]
     },
-    "text": {
-      "type": "PATTERN",
-      "value": "([^\\n{}@]+(\\n)?)+"
-    },
-    "line": {
-      "type": "ALIAS",
-      "content": {
-        "type": "PATTERN",
-        "value": "[^\\n{}@]+"
-      },
-      "named": true,
-      "value": "text"
-    },
-    "_hspace": {
-      "type": "PATTERN",
-      "value": "[ \\t\\f]*"
-    },
-    "_new_block": {
-      "type": "PATTERN",
-      "value": "[\\n\\s*]+"
-    },
     "name": {
       "type": "PATTERN",
       "value": "[a-zA-Z][\\w_]*"
     },
     "attribute_name": {
       "type": "PATTERN",
-      "value": "[^{}\"'/=\\s\\]]+"
+      "value": "[A-Za-z]+"
     },
     "attribute_value": {
       "type": "PATTERN",
-      "value": "[^{}\"'=\\s\\]]+"
+      "value": "\\w+"
     },
     "_quoted_attribute_value": {
       "type": "CHOICE",
