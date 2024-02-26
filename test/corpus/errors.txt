@@ -1,0 +1,19 @@
+===================================
+Text starting with curly brace
+===================================
+{test}
+---
+
+(document
+  (ERROR
+    (name)))
+
+===================================
+Text starting with backet
+===================================
+[test]
+---
+
+(document
+  (ERROR
+    (name)))
