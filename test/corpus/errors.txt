@@ -17,3 +17,19 @@ Text starting with backet
 (document
   (ERROR
     (name)))
+
+===================================
+Fixme: Text with special characters
+===================================
+This {text} without tags should be [allowed].
+---
+(document
+  (ERROR
+    (text)
+    (name)
+    (name)
+    (name)
+    (name)
+    (name)
+    (name)
+    (UNEXPECTED '.')))
