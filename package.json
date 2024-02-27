@@ -1,11 +1,8 @@
 {
-  "name": "treesitter-disseminate",
-  "version": "1.0.0",
+  "name": "tree-sitter-dm",
+  "version": "0.1.0",
   "description": "",
   "main": "bindings/node",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -13,5 +10,17 @@
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.21.0-pre-release-1"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.dm",
+      "file-types": ["dm"],
+      "highlights": [
+        "queries/highlights.scm"
+      ]
+    }
+  ]
 }

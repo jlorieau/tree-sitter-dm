@@ -2,13 +2,18 @@
   "name": "disseminate",
   "rules": {
     "document": {
-      "type": "REPEAT",
-      "content": {
-        "type": "SYMBOL",
-        "name": "p"
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "block"
+          }
+        }
+      ]
     },
-    "p": {
+    "block": {
       "type": "CHOICE",
       "members": [
         {
@@ -59,6 +64,10 @@
         {
           "type": "SYMBOL",
           "name": "tag"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro"
         }
       ]
     },
@@ -66,12 +75,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "@"
-        },
-        {
           "type": "SYMBOL",
-          "name": "tag_name"
+          "name": "_id"
         },
         {
           "type": "CHOICE",
@@ -132,21 +137,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "@"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "v"
-            },
-            {
-              "type": "STRING",
-              "value": "eq"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_id_verb"
         },
         {
           "type": "CHOICE",
@@ -174,6 +166,27 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_id"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "attributes"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -238,13 +251,61 @@
     },
     "text": {
       "type": "PATTERN",
-      "value": "([^\\n{}@]+(\\n)?)+"
+      "value": "([^\\n{}@\\[\\]]+(\\n)?)+"
+    },
+    "line": {
+      "type": "ALIAS",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\\n{}@]+"
+      },
+      "named": true,
+      "value": "text"
+    },
+    "_hspace": {
+      "type": "PATTERN",
+      "value": "[ \\t\\f]*"
     },
     "_new_block": {
       "type": "PATTERN",
       "value": "[\\n\\s*]+"
     },
-    "tag_name": {
+    "_id": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "name"
+        }
+      ]
+    },
+    "_id_verb": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "v"
+            },
+            {
+              "type": "STRING",
+              "value": "eq"
+            }
+          ]
+        }
+      ]
+    },
+    "name": {
       "type": "PATTERN",
       "value": "[a-zA-Z][\\w_]*"
     },

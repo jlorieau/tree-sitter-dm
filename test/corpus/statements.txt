@@ -1,27 +1,27 @@
 ===================================
-Basic Tag (no paragraph)
+Basic tag (no paragraph)
 ===================================
 @span{Hello}
 ---
 
 (document
-  (p
+  (block
     (tag
-      (tag_name)
+      (name)
       (text)
     )))
 
 
 ===================================
-Basic Tag with Attribute
+Basic tag with attribute
 ===================================
 @span[id=one name="my [name]"]{Hello}
 ---
 
 (document
-  (p
+  (block
     (tag
-      (tag_name)
+      (name)
       (attributes
         (attribute
           (attribute_name)
@@ -39,51 +39,51 @@ My @v{first @i{test} tag}!
 ---
 
 (document
-  (p
+  (block
     (text)
     (tag_verb)
     (text)))
 
 
 ===================================
-Tags with Text
+Tags with text
 ===================================
 This is @i{my} text: @span{Hello}!
 ---
 
 (document
-  (p
+  (block
     (text)
     (tag
-      (tag_name)
+      (name)
       (text))
     (text)
     (tag
-      (tag_name)
+      (name)
       (text))
     (text)))
 
 ===================================
-Text with Nested Tags
+Text with nested tags
 ===================================
 This is @span{my @i{nested} tag}.
 ---
 
 (document
-  (p
+  (block
     (text)
     (tag
-      (tag_name)
+      (name)
       (text)
       (tag
-        (tag_name)
+        (name)
         (text))
       (text))
     (text)))
 
 
 ===================================
-Paragraphs with Tags
+Paragraphs with tags
 ===================================
 This is a document with multiple paragraphs.
 This is the @i{first} paragraph.
@@ -95,18 +95,39 @@ This is my third paragraph.
 ---
 
 (document
-  (p
+  (block
     (text)
     (tag
-      (tag_name)
+      (name)
       (text))
     (text))
-  (p
+  (block
     (text)
     (tag
-      (tag_name)
+      (name)
       (text))
     (text))
-  (p
+  (block
+    (text)))
+
+
+===================================
+Basic macro with paragraphs
+===================================
+@title{My document}
+
+This is my document with title @title.
+---
+
+(document
+  (block
+  
+    (tag
+      (name)
+      (text)))
+  (block
+    (text)
+    (macro
+      (name))
     (text)))
 
