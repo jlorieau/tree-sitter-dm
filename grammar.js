@@ -2,7 +2,7 @@ const TAG_IDENT = "@";  // Tag identifier
 const EOF = "\0";  // end of file or end of string 
 
 module.exports = grammar({
-  name: 'disseminate',
+  name: 'dm',
 
   /* TODO:
    *   - Add macros

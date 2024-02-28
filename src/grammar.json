@@ -1,5 +1,5 @@
 {
-  "name": "disseminate",
+  "name": "dm",
   "rules": {
     "document": {
       "type": "SEQ",
