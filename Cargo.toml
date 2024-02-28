@@ -1,5 +1,5 @@
 [package]
-name = "tree-sitter-dm,"
+name = "tree-sitter-dm"
 description = "Disseminate grammar for the tree-sitter parsing library"
 version = "0.0.1"
 keywords = ["incremental", "parsing", "disseminate"]
