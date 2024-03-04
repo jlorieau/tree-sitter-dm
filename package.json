@@ -9,7 +9,7 @@
     "nan": "^2.18.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.21.0-pre-release-1"
+    "tree-sitter-cli": "^0.21.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +17,9 @@
   "tree-sitter": [
     {
       "scope": "source.dm",
-      "file-types": ["dm"],
+      "file-types": [
+        "dm"
+      ],
       "highlights": [
         "queries/highlights.scm"
       ]
